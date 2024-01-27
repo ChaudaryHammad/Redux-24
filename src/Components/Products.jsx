@@ -1,7 +1,10 @@
 
-import { Link } from "react-router-dom"
 import data from "../assets/data"
+
+
 function Products() {
+
+
   return (
   <>
    
@@ -43,12 +46,13 @@ function Products() {
             </p>
 
             <div className="flex justify-center">
-              <Link
-                href="#"
+              <button
+              
+                
                 className="block rounded bg-gray-700 px-5 py-3 text-sm text-gray-100 transition hover:bg-black hover:text-white"
               >
                 Add to Cart
-              </Link>
+              </button>
             </div>
           </div>
         </div>
