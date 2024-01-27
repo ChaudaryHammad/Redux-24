@@ -1,9 +1,13 @@
 import  { useState } from 'react'
 import { Link } from 'react-router-dom';
-
+import { FaShoppingCart } from 'react-icons/fa';
+import { IoMenuSharp } from "react-icons/io5";
+import { RxCross2 } from "react-icons/rx";
 function Nav() {
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const [cart, setCart] = useState(1);
 
+    
     const toggleMenu = () => {
       setMenuOpen(!isMenuOpen);
     };
@@ -11,44 +15,50 @@ function Nav() {
     return (
       <nav className="bg-black p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <Link to="/" className="text-white font-bold text-xl">Home</Link>
+          <Link to="/" className="text-white font-bold text-xl">MobilX</Link>
   
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden md:flex space-x-4 mr-5">
             <Link to="/products" className="text-white hover:text-gray-300">Products</Link>
-            <Link to="/cart" className="text-white hover:text-gray-300">cart(0)</Link>
+            <Link to="/cart" className="text-white hover:text-gray-300 relative">
+        <FaShoppingCart size={20} className="inline-block mr-1" />
+        {cart> 0 && (
+          <span className="cart-count bg-red-500 text-white rounded-full px-1 absolute top-0 text-[10px] left-4">
+            {cart}
+          </span>
+        )}
+      </Link>
            
           </div>
   
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
-              className="focus:outline-none"
+              className="focus:outline-none bg-black text-white"
               onClick={toggleMenu}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
+              {isMenuOpen ? (
+                <RxCross2 size={30} />
+              ) : (
+                <IoMenuSharp size={30} />
+              
+              )}
             </button>
           </div>
   
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden absolute top-16 left-0 right-0 bg-black">
+            <div className="md:hidden absolute top-16 left-0 right-0 bg-black transition-opacity duration-300 ease-in-out opacity-100">
               <div className="flex flex-col items-center space-y-4 p-4">
               <Link to="/products" className="text-white hover:text-gray-300">Products</Link>
-            <Link to="/cart" className="text-white hover:text-gray-300">cart(0)</Link>
+              <Link to="/cart" className="text-white hover:text-gray-300 relative">
+        <FaShoppingCart size={20} className="inline-block mr-1" />
+        {cart > 0 && (
+          <span className="cart-count bg-red-500 text-white rounded-full px-1 absolute top-0 text-[10px] left-4">
+            {cart}
+          </span>
+        )}
+      </Link>
            
               </div>
             </div>
