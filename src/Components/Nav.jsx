@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import { IoMenuSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
+import { useSelector } from 'react-redux';
 function Nav() {
+  const cart = useSelector((state)=> state.cart)
+
+
     const [isMenuOpen, setMenuOpen] = useState(false);
-    const [cart, setCart] = useState(1);
+    
 
     
     const toggleMenu = () => {
@@ -13,8 +17,8 @@ function Nav() {
     };
   
     return (
-      <nav className="bg-black p-4">
-        <div className="container mx-auto flex justify-between items-center">
+      <nav className="">
+        <div className="container mx-auto flex justify-between items-center fixed  bg-black p-4 " style={{zIndex:'1'}}>
           <Link to="/" className="text-white font-bold text-xl">MobilX</Link>
   
           {/* Desktop Menu */}
@@ -22,9 +26,9 @@ function Nav() {
             <Link to="/products" className="text-white hover:text-gray-300">Products</Link>
             <Link to="/cart" className="text-white hover:text-gray-300 relative">
         <FaShoppingCart size={20} className="inline-block mr-1" />
-        {cart> 0 && (
+        {cart.length> 0 && (
           <span className="cart-count bg-red-500 text-white rounded-full px-1 absolute top-0 text-[10px] left-4">
-            {cart}
+            {cart.length}
           </span>
         )}
       </Link>
@@ -53,9 +57,9 @@ function Nav() {
               <Link to="/products" className="text-white hover:text-gray-300">Products</Link>
               <Link to="/cart" className="text-white hover:text-gray-300 relative">
         <FaShoppingCart size={20} className="inline-block mr-1" />
-        {cart > 0 && (
+        {cart.length > 0 && (
           <span className="cart-count bg-red-500 text-white rounded-full px-1 absolute top-0 text-[10px] left-4">
-            {cart}
+            {cart.length}
           </span>
         )}
       </Link>
