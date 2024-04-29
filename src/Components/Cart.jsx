@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { removeFromCart } from "../app/slice/cart/cartSlice";
+import { remove } from "../app/slice/cart/cartSlice";
 
 
 function Cart() {
@@ -67,7 +67,7 @@ function Cart() {
                 />
               </form>
 
-              <button className="text-gray-600 transition hover:text-red-600" onClick={()=>dispatch(removeFromCart(item.id))}>
+              <button className="text-gray-600 transition hover:text-red-600" onClick={()=>dispatch(remove(item.id))}>
                 <span className="sr-only">Remove item</span>
 
                 <svg
