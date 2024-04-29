@@ -41,16 +41,16 @@ function Cart() {
               <>
               <li className="flex items-center gap-4">
             <img
-              src={item.img}
+              src={item.image}
               alt=""
               className="h-16 w-16 rounded object-cover"
             />
 
             <div>
-              <h3 className="text-sm text-gray-900">{item.name}</h3>
+              <h3 className="text-sm text-gray-900">{item.title}</h3>
               <dl className="text-sm">
-                {item.price} x {item.quantity}
-              </dl>
+  {item.price} x {item.quantity}
+</dl>
            
             </div>
 

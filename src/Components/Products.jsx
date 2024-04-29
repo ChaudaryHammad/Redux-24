@@ -1,11 +1,21 @@
 
-import { useDispatch} from "react-redux";
-
-import data from "../assets/data";
+import { useDispatch, useSelector} from "react-redux";
 import { add } from "../app/slice/cart/cartSlice";
+import { useEffect} from "react";
+import { fetchProducts } from "../app/slice/cart/productSlice";
 
 function Products() {
+
+ 
   const dispatch = useDispatch();
+
+  const data= useSelector((state) => state.product.data);
+
+  console.log(data.length);
+
+  useEffect(()=>{
+dispatch(fetchProducts());
+  },[])
 
   const handleAddToCart = (item) => {
     dispatch(add(item));
@@ -32,7 +42,7 @@ function Products() {
               <li key={item.id} className="flex justify-center">
                 <div className="group block overflow-hidden" >
                   <img
-                    src={item.img}
+                    src={item.image}
                     alt=""
                     className="h-[240px] w-[250px] object-center transition duration-500 group-hover:scale-105"
                   />
