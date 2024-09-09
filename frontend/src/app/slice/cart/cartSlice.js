@@ -57,13 +57,13 @@ const cartSlice = createSlice({
 
      reducers:{
         add(state,action){
-            const newItwm = action.payload;
-            const existingItem = state.find((item)=> item.id === newItwm.id);
+            const newItem = action.payload;
+            const existingItem = state.find((item)=> item.id === newItem.id);
             if(existingItem){
                 alert("Item already exist in cart")
             }
             else{
-                state.push(newItwm);
+                state.push(newItem);
             }
 
           

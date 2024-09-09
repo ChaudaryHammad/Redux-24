@@ -1,11 +1,19 @@
 {
-  "name": "mernstack-ecommerce-app",
-  "version": "1.1.5",
-  "description": "A full-stack ecommerce app",
+  "name": "mernstack-auth-boilerplate",
+  "version": "1.1.4",
+  "description": "A full-stack authentication boilerplate with email verification support for Node.js applications.",
   "main": "index.js",
+  "bin": {
+    "create-project": "cli.cjs"
+  },
+  "files": [
+    "cli.cjs",
+    "index.js",
+    "README.md"
+  ],
   "scripts": {
-    "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",
@@ -13,13 +21,14 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "commander": "^12.1.0",
     "cookie-parse": "^0.4.0",
     "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
+    "mernstack-auth-boilerplate": "1.1.4",
     "mongoose": "^8.5.2",
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4"
@@ -34,6 +43,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/ChaudaryHammad/mern-stack-authentication-boilerplate.git"
   }
 }

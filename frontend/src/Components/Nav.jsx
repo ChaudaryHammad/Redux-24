@@ -1,11 +1,12 @@
 import  { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { IoMenuSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { useSelector } from 'react-redux';
 function Nav() {
   const cart = useSelector((state)=> state.cart)
+  const { user,isAuthenticated} = useSelector((state) => state.user);
 
 
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -18,8 +19,8 @@ function Nav() {
   
     return (
       <nav className="">
-        <div className="container mx-auto flex justify-between items-center fixed  bg-black p-4 " style={{zIndex:'1'}}>
-          <Link to="/" className="text-white font-bold text-xl">MobilX</Link>
+        <div className="container mx-auto flex justify-between items-center   bg-black p-4 " style={{zIndex:'1'}}>
+          <Link to="/" className="text-white font-bold text-xl">{user?.name || "Mobix"}</Link>
   
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-4 mr-5">
@@ -33,6 +34,17 @@ function Nav() {
         )}
       </Link>
            
+       {
+        isAuthenticated ? (
+          <Link to="/profile" className="text-white hover:text-gray-300">
+            <FaUser size={20} />
+          </Link>
+        ) : (
+          <Link to="/login" className="text-white border px-2 rounded hover:bg-white transition-all hover:text-black  ">
+            login
+          </Link>
+        )
+       }
           </div>
   
           {/* Mobile Menu Button */}
@@ -63,6 +75,8 @@ function Nav() {
           </span>
         )}
       </Link>
+
+
            
               </div>
             </div>

@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-
 const STATUS = Object.freeze({
     IDLE:"idle",
     LOADING:"loading",
